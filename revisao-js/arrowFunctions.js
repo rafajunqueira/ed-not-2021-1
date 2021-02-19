@@ -1,7 +1,7 @@
 //função que leva um numero ao quadrado
 //se precisar disso em situação real, use a função propria, use Math.pow() ou operador **
 
-function quadrado(n){
+function quadrado(n) {
     return n * n
 }
 
@@ -19,4 +19,43 @@ console.log(quadrado(9))
 
 const quadrado2 = n => n * n
 console.log(quadrado2(9))
+
+//Função com mais de um parâmetro
+
+function potencia(b, e) {
+    return b ** e
+}
+
+console.log(potencia(2, 8))
+
+const potencia2 = (b, e) => {
+    return b ** e
+}
+
+console.log(potencia2(2, 8))
+
+// Função sem parâmetro
+
+function megasena() {
+    return Math.floor((Math.random() * 60) + 1)
+}
+
+console.log(megasena(), megasena(), megasena(), megasena(), megasena())
+
+function somaVet(vet) {
+    let soma = 0
+    for (let n of vet) soma += n
+    return soma
+}
+
+console.log(somaVet([1,2,3]))
+
+const somaVet2 = (vet) => {
+    let soma = 0
+    for (let n of vet) soma += n
+    return soma
+}
+
+console.log(somaVet2([1,2,3,4]))
+
 
