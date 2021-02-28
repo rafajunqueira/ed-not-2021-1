@@ -15,7 +15,7 @@
 
 */
 
-let estadosNe = []
+const estadosNe = []
 
 let estado1 = {
     nome: 'Sergipe',
@@ -36,6 +36,7 @@ let estado2 = {
     area: 27848.14,
     populacao: 3322820
 }
+
 estadosNe.push(estado2)
 
 let estado3 = {
@@ -127,37 +128,28 @@ for (let i = 0; i < estadosNe.length; i++) {
 }
 
 
-let vet = []
-
-const novoEstado = (novoEstado) => {
-    if (!vet.lenght) {
-        vet.push(novoEstado)
-        vet.sort()
-    }
-}
-
-
 /* 4) Escreva uma arrow function que receba um objeto. Na função, use for..in
       para extrair as propriedades e seus valores e exibi-los com console.log().
 
 */
-
-
-const exibir = (obj) => {
+exibirObj = (obj) => {
     for (let prop in obj) {
         if (prop == 'nome') {
-            novoEstado(obj[prop])
+            console.log(obj[prop])
         }
     }
 }
 
-
 /* 5) Percorra o vetor estadosNe usando for..of. Para cada objeto no vetor,
       invoque a função escrita em 4) para exibi-lo.
 
-/*
+*/
 
-   6)
+for (const est of estadosNe) {
+    exibirObj(est)
+}
+
+/* 6)
       a) Declare um vetor vazio.
       b) Insira no vetor criado no item a) apenas o nome de cada Estado, conforme
          os dados no topo deste arquivo, um de cada vez. Faça as inserções de
@@ -169,8 +161,23 @@ const exibir = (obj) => {
 
 */
 
-for (let e of estadosNe) {
-    exibir(e)
+const vetorOrdenado = []
+
+const addEstado = (estado) => {
+    if (!vetorOrdenado.lenght) {
+        vetorOrdenado.push(estado)
+    }
+    vetorOrdenado.sort()
 }
 
-console.log(`Vetor de Estados Ordenado Alfabeticamente : ${vet}`)
+const addPropObj = (obj) => {
+    for (let prop in obj) {
+        if (obj[prop].nome) {
+            addEstado(obj[prop].nome)
+        }
+    }
+}
+
+addPropObj(estadosNe)
+
+console.log(`Vetor de Estados Ordenado Alfabeticamente : ${vetorOrdenado}`)
