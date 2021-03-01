@@ -203,7 +203,9 @@ const criaNovoObjComPropObjExistente = (obj, propDesejada) => {
   }
 };
 
-criaNovoObjComPropObjExistente(estadosNe, "nome");
+//
+let propPesquisada = "nome"
+criaNovoObjComPropObjExistente(estadosNe, propPesquisada);
 
 console.log(
   `Vetor de Estados Ordenado Alfabeticamente Método 2 : ${vetorOrdenado2}`
