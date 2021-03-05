@@ -8,9 +8,12 @@ em que o valor de busca foi encontrado.
 Caso percorrido todo o vetor e não encontrado o valor de busca,
 retorna o valor convencional -1, para indicar a respectiva inexistência*/
 
+
 function buscaSequencial(vetor, valorBusca) {
     for(let i = 0; i < vetor.length; i++) {
-        if(vetor[i] === valorBusca) return i //Retorna a posição onde foi encontrado
+        if(vetor[i] === valorBusca) {
+            return i //Retorna a posição onde foi encontrado
+        }
     }
     return -1 //Valor de busca não encontrado
 }
