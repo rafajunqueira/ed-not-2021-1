@@ -7,19 +7,25 @@ function selectionSort(vetor, fnComp) {
     function encontrarMenor(inicio) {
         let menor = inicio
         // Este loop vai até a última posição
-        for (let j = inicio + 1; j < vetor.length; j++) {
-            if (vetor[j] < vetor[menor]) menor = j
+        for(let j = inicio + 1; j < vetor.length; j++) {
+            //if(vetor[j] < vetor[menor]) menor = j
+            // Na passagem para função de comparação, a ordem dos
+            // objetos precisa ser invertida
+            if(fnComp(vetor[menor], vetor[j])) menor = j
             comps++
         }
         return menor
     }
 
     // Percurso do vetor até a PENÚLTIMA posição
-    for (let i = 0; i <= vetor.length - 2; i++) {
+    for(let i = 0; i <= vetor.length - 2; i++) {
         pass++
         let menor = encontrarMenor(i + 1)
-        if (vetor[menor] < vetor[i]) {
-            [vetor[menor], vetor[i]] = [vetor[i], vetor[menor]]
+        
+        //if(vetor[menor] < vetor[i]) {
+        // Parâmetros em ordem invertida
+        if(fnComp(vetor[i], vetor[menor])) {
+            [ vetor[menor], vetor[i] ] = [ vetor[i], vetor[menor] ]
             trocas++
         }
         comps++
@@ -28,8 +34,13 @@ function selectionSort(vetor, fnComp) {
 
 // Função de comparação retorna true caso o PRIMEIRO objeto seja MAIOR que o SEGUNDO
 
-let nums = [7, 4, 9, 6, 0, 1, 8, 2, 5, 3]
+import { candidatos } from './includes/candidatos-2018.mjs'
 
-selectionSort(nums)
-console.log(nums)
-console.log({ trocas, pass, comps })
+//console.log('ANTES:', candidatos)
+console.time('Ordenando candidatos...')
+// Ordenando pelo nome de urna (NM_URNA_CANDIDATO)
+selectionSort(candidatos, (obj1, obj2) => obj1.NM_URNA_CANDIDATO > obj2.NM_URNA_CANDIDATO)
+let memoria = process.memoryUsage().heapUsed / 1024 / 1024
+console.timeEnd('Ordenando candidatos...')
+console.log('DEPOIS:', candidatos)
+console.log({trocas, pass, comps, memoria})
