@@ -1,20 +1,20 @@
-import { Stack } from './lib/Stack.mjs'
+import { Stack } from "./lib/Stack.mjs";
 
-const texto = 'Socorram-me, subi no ônibus em Marrocos'
+const texto = "Socorram-me, subi no ônibus em Marrocos";
 
-const pilha = new Stack()
+const pilha = new Stack();
 
 // Empilhamento
-for(let i = 0; i < texto.length; i++) {
-    pilha.push(texto.charAt(i))
+for (let i = 0; i < texto.length; i++) {
+  pilha.push(texto.charAt(i));
 }
 
-console.log(pilha.print())
+//console.log(pilha.print())
 
-let textoRev = ''
+let textoRev = "";
 
 // Desempilhamento
-while(! pilha.empty) { 
-    textoRev += pilha.pop()
+while (!pilha.empty) {
+  textoRev += pilha.pop();
 }
-console.log(textoRev)
+console.log(textoRev);
